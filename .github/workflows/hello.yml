@@ -12,6 +12,9 @@ jobs:
       - name: Echo the message
         run: |
           echo "Hola ERICK"
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          
       - name: Dime la fecha
         run: date
       - run: ls -l
