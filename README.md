@@ -1,7 +1,7 @@
 [![Deployment Pipeline](https://github.com/midudev/pokedex-for-ci/actions/workflows/pipeline.yml/badge.svg)](https://github.com/midudev/pokedex-for-ci/actions/workflows/pipeline.yml)
 
 
-[![Deployment Pipeline test](https://github.com/erickdiazbabelgroup/pokedex-for-ci/actions/workflows/pipeline.yml/badge.svg)](https://github.com/erickdiazbabelgroup/pokedex-for-ci/actions/workflows/pipeline.yml)
+[![Deployment Pipeline](https://github.com/erickdiazbabelgroup/pokedex-for-ci/actions/workflows/pipeline.yml/badge.svg)](https://github.com/erickdiazbabelgroup/pokedex-for-ci/actions/workflows/pipeline.yml)
 # Full Stack open CI/CD
 
 This repository is used for the CI/CD module of the Full stack open course
