@@ -10,7 +10,7 @@ on:
 jobs:
 
   avoid_reduncy:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Cancel Previous Redundant Builds
         uses: styfle/cancel-workflow-action@0.9.1
@@ -18,14 +18,14 @@ jobs:
           access_token: ${{ github.token }}
 
   lint:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '18'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
@@ -33,14 +33,14 @@ jobs:
         run: npm run eslint
 
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '18'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
@@ -53,14 +53,14 @@ jobs:
 
   test:
     needs: [lint, build]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '18'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
@@ -73,14 +73,14 @@ jobs:
 
   e2e:
     needs: [lint, build]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '18'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci
@@ -97,7 +97,7 @@ jobs:
 
   deploy:
     needs: [test, e2e]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
