@@ -88,12 +88,15 @@ jobs:
         with:
           name: dist
           path: dist
+      - name: Set base URL for Cypress
+        run: echo "CYPRESS_BASE_URL=http://localhost:5000" >> $GITHUB_ENV
       - name: E2E tests
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v5
         with:
-          command: npm run test:e2e
+          command: npx cypress run
           start: npm run start-test
           wait-on: http://localhost:5000
+          wait-on-timeout: 60
 
   deploy:
     needs: [test, e2e]
