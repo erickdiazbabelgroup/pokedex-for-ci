@@ -104,7 +104,9 @@ jobs:
           fetch-depth: 0
 
       - name: Check if Railway token is loaded
-        run: echo "Railway token starts with: ${RAILWAY_TOKEN:0:4}"
+        run: |
+          echo "First 4 characters of RAILWAY_TOKEN:"
+          echo "${RAILWAY_TOKEN}" | cut -c1-4
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
 
