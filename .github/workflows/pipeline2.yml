@@ -102,12 +102,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - uses: bervProject/railway-deploy@main
+
+      - name: Install Railway CLI
+        run: npm install -g railway
+  
+      - name: Deploy with Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        with:
-          service: "positive-integrity"
-          detach: true
+        run: railway up --service "positive-integrity"
 
       - name: Deploy to Heroku
         if: ${{ github.event_name == 'push' }}
