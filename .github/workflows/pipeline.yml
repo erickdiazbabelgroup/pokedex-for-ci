@@ -21,7 +21,7 @@ jobs:
           node-version: '16'
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci
+        run: npm install --no-audit --no-fund --no-optional
       - name: Lint
         run: npm run eslint
 
@@ -36,7 +36,7 @@ jobs:
           node-version: '16'
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci
+        run: npm install --no-audit --no-fund --no-optional
       - name: Build
         run: npm run build
       - uses: actions/upload-artifact@v4
