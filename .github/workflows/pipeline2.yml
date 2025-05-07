@@ -103,14 +103,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install Railway CLI
-        run: npm install -g railway
   
       - name: Deploy with Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: railway up --service "positive-integrity"
-
+        run: npx @railway/cli up --service "positive-integrity"
+        
       - name: Deploy to Heroku
         if: ${{ github.event_name == 'push' }}
         uses: akhileshns/heroku-deploy@v3.12.12
