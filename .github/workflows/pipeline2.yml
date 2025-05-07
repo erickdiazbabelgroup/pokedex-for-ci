@@ -103,12 +103,17 @@ jobs:
         with:
           fetch-depth: 0
 
-  
+      - name: Check if Railway token is loaded
+        run: echo "Railway token starts with: ${RAILWAY_TOKEN:0:4}"
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
+          
       - name: Deploy with Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: npx @railway/cli up --service "positive-integrity"
-        
+
       - name: Deploy to Heroku
         if: ${{ github.event_name == 'push' }}
         uses: akhileshns/heroku-deploy@v3.12.12
