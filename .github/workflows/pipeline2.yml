@@ -103,18 +103,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Check if Railway token is loaded
-        run: |
-          echo "First 4 characters of RAILWAY_TOKEN:"
-          echo "${RAILWAY_TOKEN}" | cut -c1-4
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-
-          
-      - name: Deploy with Railway
-        env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: npx @railway/cli up --service "positive-integrity"
+      - name: Deploy to Vercel Action
+        uses: BetaHuhn/deploy-to-vercel-action@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Deploy to Heroku
         if: ${{ github.event_name == 'push' }}
