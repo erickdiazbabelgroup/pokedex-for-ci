@@ -44,4 +44,31 @@ jobs:
           name: dist
           path: dist
 
- 
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund --no-optional
+      - name: Lint
+        run: npm run eslint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund --no-optional
+      - name: Lint
+        run: npm test
